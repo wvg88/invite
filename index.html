@@ -24,14 +24,14 @@
             margin-top:75px;
             font-family: serif;
             font-size: 1.5rem;
-            letter-spacing: -0.03em;
+            letter-spacing: -0.04em;
             font-weight:500;
             text-transform: uppercase;
         }
         ul{
             list-style: outside;
             list-style-type: circle;
-            text-indent: -5%;
+            text-indent: -10%;
         }
         a{
             color: #e6934f;
@@ -42,7 +42,7 @@
             margin-left:auto;
             margin-right: auto;
             max-width:500px;
-            line-height: 1.5rem;
+            line-height: 1.7rem;
         }
         svg{
             overflow: visible;
@@ -54,7 +54,7 @@
         }
         #SVG{
             
-            width:100%;
+            width:60%;
             height: 100%;
             position: relative;
             margin-top:0%;
@@ -177,7 +177,7 @@
         <h1>Welkom</h1>
         Je bent uitgenodigd op ons feest om de liefde te vieren. Officieel zijn we al getrouwd, maar nog niet officieus met vrienden en familie. Dit willen we 3 augustus in de tuin van Jacqueline en Floris doen aan de Emmerseweg 26 in Haghorst bij hun prachtige tuin.
         <h1>Vervoer</h1> 
-De locatie is lastig te bereiken met het OV. Het kan wel met de bus 142, maar die gaat maar eens in het uur. Je kan beter een OV fiets bij station Tilburg ophalen en een 45 minuten door een stuk prachtige natuur langs het kanaal fietsen. 
+De locatie is lastig te bereiken met het OV. Het kan wel met de bus 142, maar dat is vervolgens nog een half uur lopen. Je kan beter een OV fiets bij station Tilburg ophalen en een 45 minuten door een stuk prachtige natuur langs het kanaal fietsen. 
 Met de auto kan ook, parkeren in de straat kan tegenover het huis in de straat van sportpark de Haan. 
 
 <h1>Gift</h1>
@@ -217,6 +217,35 @@ In de tuin is genoeg plek voor 10 kleine tentjes. Wil jij een grotere tent als o
 
 Wil je blijven slapen? Stuur een e-mail naar <a href="mailto:marjolein_manintveld@hotomail.com">marjolein_manintveld@hotomail.com</a> 
     </div>
+
+    <form id="inviteForm"> <h1>RSVP</h1>  <br> Naam: <input type="text" id="name"><br> Email: <input id="email" type="email"><br><button>Verzenden</button></button> </input>   </form>
+
+<script>
+
+    const form = document.forms['inviteForm']
+
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxbziIya0OUcT2j6xG_lAW8iBt7TVXf5rU6XHwfu-4n18UOMRkjBXtDw1FT_lbqP0YAIQ/exec"
+form.addEventListener('submit', e => {
+    e.preventDefault()
     
+    fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors'  })
+        .then(response => {
+            if (response.status === 200) {
+                console.log('Success!', response)
+                document.forms['inviteForm'].reset()
+                fetch(url).then(res => res.json()).then(data => {
+                    console.log(data)
+                    const headings = data[0];
+                    const rows = data.slice(1).reverse();
+                    outputData(headings, rows)
+            
+                });
+            }
+        })
+        .catch(error => console.error('Error!', error.message))
+})
+    
+</script>
+
 </body>
 </html>
