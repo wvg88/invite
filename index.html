@@ -218,26 +218,23 @@ In de tuin is genoeg plek voor 10 kleine tentjes. Wil jij een grotere tent als o
 Wil je blijven slapen? Stuur een e-mail naar <a href="mailto:marjolein_manintveld@hotomail.com">marjolein_manintveld@hotomail.com</a> 
     </div>
 
-    <form id="inviteForm"> <h1>RSVP</h1>  <br> Naam: <input type="text" id="name"><br> Email: <input id="email" type="email"><br><button>Verzenden</button></button> </input>   </form>
+    <form name="inviteForm"> <h1>RSVP</h1>  <br> Naam: <input type="text" name="name" placeholder="Naam"><br> Email: <input name="email" type="email" placeholder="e-mail"><br><button type="submit">Verzenden</button>   </form>
 
 <script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxbziIya0OUcT2j6xG_lAW8iBt7TVXf5rU6XHwfu-4n18UOMRkjBXtDw1FT_lbqP0YAIQ/exec"
 
+  
     const form = document.forms['inviteForm']
-
-    const scriptURL = "https://script.google.com/macros/s/AKfycbxbziIya0OUcT2j6xG_lAW8iBt7TVXf5rU6XHwfu-4n18UOMRkjBXtDw1FT_lbqP0YAIQ/exec"
 form.addEventListener('submit', e => {
     e.preventDefault()
     
-    fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors'  })
+    fetch(scriptURL, { method: 'POST', mode:"no-cors", body: new FormData(form) })
         .then(response => {
             if (response.status === 200) {
                 console.log('Success!', response)
-                document.forms['inviteForm'].reset()
-                fetch(url).then(res => res.json()).then(data => {
+                //document.forms['inviteForm'].reset()
+                fetch(scriptURL).then(res => res.json()).then(data => {
                     console.log(data)
-                    const headings = data[0];
-                    const rows = data.slice(1).reverse();
-                    outputData(headings, rows)
             
                 });
             }
