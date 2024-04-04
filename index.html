@@ -6,7 +6,12 @@
     <title>Marjolein & Wouter Feest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link
+rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+/> 
     <style>
 
         body{
@@ -19,6 +24,7 @@
         h1{
             font-family: 'Playfair Display', serif;
             margin-top:75px;
+            margin-bottom:35px;
             font-size: 2rem;
             letter-spacing: -0.04em;
             font-weight:700;
@@ -27,27 +33,40 @@
         ul{
             list-style: outside;
             list-style-type: circle;
-            text-indent: -10%;
+
         }
-        a{
-            color: #23653b;
-        }
+   
+ 
+      
         #content{
+            font-size:1.2em;
             position: relative;
-            padding-left: 7%;
-            padding-right:7%;
-            margin-top: 40vh;
+            padding-left: 40px;
+            padding-right:40px;
+            margin-top: 50px;
             margin-left:auto;
             margin-right: auto;
-            max-width:500px;
+            min-width:400px;
+            max-width:800px;
             line-height: 1.7rem;
         }
-        #INTRO{
+  
+        .label{
+            color:#fff;
+            display: none;
+        }
+     
+        @media screen and (max-width: 600px) {
+            #INTRO{
             position: relative;
             width:190%;
             margin-left:-46%;
 
+            }
         }
+       #INTRO{
+        margin-top:-20%;
+       }
 
         #ILLUSTRATION > path{
             transform-origin: center center;
@@ -197,7 +216,7 @@
 
     <div id="content">
         <h1>Welkom</h1>
-        Je bent uitgenodigd op ons feest om de liefde te vieren. Officieel zijn we al getrouwd, maar nog niet officieus met vrienden en familie. Dit willen we 3 augustus in de tuin van Jacqueline en Floris doen aan de Emmerseweg 26 in Haghorst bij hun prachtige tuin.
+        Je bent uitgenodigd op ons feest om de liefde te vieren. Officieel zijn we al getrouwd, maar nog niet officieus. Dit willen we 3 augustus in de tuin doen aan de Emmerseweg 26 in Haghorst bij hun prachtige tuin.
         <h1>Vervoer</h1> 
 De locatie is lastig te bereiken met het OV. Het kan wel met de bus 142, maar dat is vervolgens nog een half uur lopen. Je kan beter een OV fiets bij station Tilburg ophalen en een 45 minuten door een stuk prachtige natuur langs het kanaal fietsen. 
 Met de auto kan ook, parkeren in de straat kan tegenover het huis in de straat van sportpark de Haan. 
@@ -237,25 +256,145 @@ In de tuin is genoeg plek voor 10 kleine tentjes. Wil jij een grotere tent als o
     <li><a href="https://www.buitenhofhilvarenbeek.nl/">https://www.buitenhofhilvarenbeek.nl/</a></li>
 </ul>
 
-Wil je blijven slapen? Stuur een e-mail naar <a href="mailto:marjolein_manintveld@hotomail.com">marjolein_manintveld@hotomail.com</a> 
-    </div>
+Wil je blijven slapen? Stuur een e-mail naar <a href="mailto:marjolein_manintveld@hotmail.com">marjolein_manintveld@hotmail.com</a> 
+    
 
-    <form name="inviteForm" action=""> <h1>RSVP</h1>  <br> Naam: <input type="text" name="name" placeholder="Naam" autocomplete="on"><br> Email: <input name="email" type="email" placeholder="e-mail" autocomplete="on"><br><button type="submit">Verzenden</button>   </form>
+<h1>RSVP</h1>
+    <form id="form" class="container m-4 pl-4" method="POST">
+        <div class="field">
+          <label class="label">Naam</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Naam"
+              name="Client Name"
+            />
+          </div>
+        </div>
+  
+        <!-- <div class="field">
+          <label class="label">Last Name</label>
+          <div class="control">
+            <input
+              class="input"
+              type="text"
+              placeholder="Your Last Name"
+              name="Last Name"
+            />
+          </div>
+        </div> -->
+  
+        <div class="field">
+          <label class="label">Email</label>
+          <div class="control">
+            <input
+              class="input"
+              type="email"
+              placeholder="Email"
+              name="Email"
+            />
+          </div>
+        </div>
+  
+  
+        <div class="field">
+          <label class="label">Opmerking</label>
+          <div class="control">
+            <textarea
+              class="textarea"
+              placeholder="Ik kom met..."
+              name="Notes"
+            ></textarea>
+          </div>
+        </div>
+  
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-primary" type="submit" id="submit-button">
+              aanmelden
+            </button>
+          </div>
+          <div class="control">
+            <button class="button is-danger">annuleren</button>
+          </div>
+        </div>
+      </form>
+      <div
+        id="message"
+        style="
+          display: none;
+          margin: 20px;
+          font-weight: bold;
+          color: green;
+          padding: 8px;
+          background-color: beige;
+          border-radius: 4px;
+          border-color: aquamarine;
+        "
+      ></div>
+      </div>
+    
 
 <script>
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbxbziIya0OUcT2j6xG_lAW8iBt7TVXf5rU6XHwfu-4n18UOMRkjBXtDw1FT_lbqP0YAIQ/exec'
+  document.getElementById("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+        document.getElementById("message").textContent = "Submitting..";
+        document.getElementById("message").style.display = "block";
+        document.getElementById("submit-button").disabled = true;
 
-  
+        // Collect the form data
+        var formData = new FormData(this);
+        var keyValuePairs = [];
+        for (var pair of formData.entries()) {
+          keyValuePairs.push(pair[0] + "=" + pair[1]);
+        }
 
-const form = document.forms['inviteForm']
+        var formDataString = keyValuePairs.join("&");
 
-form.addEventListener('submit', e => {
-  e.preventDefault()
-  fetch(scriptURL, {redirect: "follow", method: 'POST', body: new FormData(form)})
-  .then(response => alert("Thank you! your form is submitted successfully." ))
-  .then(() => { window.location.reload(); })
-  .catch(error => console.error('Error!', error.message))
-})
+        // Send a POST request to your Google Apps Script
+        fetch(
+          "https://script.google.com/macros/s/AKfycbyZ-pbD4uAhjJxkqbASsqSR0DGgp2F0L1fpYzqFAXGKZbMkxrRkZTyQZ7EJgR9OEGQ/exec",
+          {
+            redirect: "follow",
+            method: "POST",
+            body: formDataString,
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          } 
+        )
+          .then(function (response) {
+            // Check if the request was successful
+            if (response) {
+              return response; // Assuming your script returns JSON response
+            } else {
+              throw new Error("Failed to submit the form.");
+            }
+          })
+          .then(function (data) {
+            // Display a success message
+            document.getElementById("message").textContent =
+              "Data submitted successfully!";
+            document.getElementById("message").style.display = "block";
+            document.getElementById("message").style.backgroundColor = "green";
+            document.getElementById("message").style.color = "beige";
+            document.getElementById("submit-button").disabled = false;
+            document.getElementById("form").reset();
+
+            setTimeout(function () {
+              document.getElementById("message").textContent = "";
+              document.getElementById("message").style.display = "none";
+            }, 2600);
+          })
+          .catch(function (error) {
+            // Handle errors, you can display an error message here
+            console.error(error);
+            document.getElementById("message").textContent =
+              "An error occurred while submitting the form.";
+            document.getElementById("message").style.display = "block";
+          });
+      });
 </script>
 
 </body>
