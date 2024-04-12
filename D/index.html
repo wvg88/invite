@@ -50,6 +50,7 @@ href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
           font-size: 0.8em;
           text-transform: uppercase;
           font-weight: 600;
+          letter-spacing: -0.01em;
 
         }
         .underline{
@@ -277,11 +278,11 @@ href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
 Haghorst ligt op ongeveer 15 km vanaf Tilburg. Je komt het makkelijkste bij de locatie met de auto of de fiets. 
 Je kan vanaf Tilburg CS een OV fiets huren en vanaf daar fiets je in ongeveer 40 minuten door een mooi stukje Brabantse natuur richting Haghorst. 
 <br><br>
-Als je met de auto komt kan je parkeren in de straat tegenover: De Haan. Zet je auto het liefst zo ver mogelijk aan de kant, er willen nog wel eens tractoren rijden die de ruimte nodig hebben.
+Als je met de auto komt, dan kan je parkeren in de straat tegenover: De Haan. 
 
 <h1>Overnachten</h1>
 Voor de avontuurlijke gasten onder ons is er de mogelijkheid om te blijven kamperen. Dit is de perfecte manier om de feestvreugde nog even vast te houden. 
-In de tuin is genoeg plek voor ongeveer 15 kleine tentjes. <br><br>
+In de tuin is genoeg plek voor kleine tentjes. <br><br>
 Wil je blijven slapen? Vink het onderaan aan. 
 
 
@@ -300,7 +301,7 @@ Ben jij handig & creatief en wil je liever een handje helpen? Laat het onderaan 
 
 <h1>En dan nog iets.. </h1>
 
-Wil jij iets zeggen tegen het bruidspaar tijdens het diner of iets anders voordragen? Stuur een e-mail naar: 
+Wil jij iets zeggen tegen het bruidspaar tijdens of iets anders voordragen? Stuur een e-mail naar: 
 <a href="mailto:juriaanachthoven@hotmail.com">juriaanachthoven@hotmail.com</a> zodat het een verrassing blijft.
 
 <h1>RSVP</h1>
@@ -314,11 +315,10 @@ style="
   display: none;
   margin: 20px;
   font-weight: bold;
-  color: aquamarine;
+  color: #fff;
   padding: 8px;
-  background-color: beige;
+  background-color: #23653b;
   border-radius: 4px;
-  border-color: aquamarine;
 "
 ></div>
     <form id="form" class="container m-4 pl-4" method="POST">
@@ -404,7 +404,7 @@ style="
 <script>
   document.getElementById("form").addEventListener("submit", function (e) {
         e.preventDefault(); // Prevent the default form submission
-        document.getElementById("message").textContent = "Submitting..";
+        document.getElementById("message").textContent = "Verzenden..";
         document.getElementById("message").style.display = "block";
         document.getElementById("submit-button").disabled = true;
 
@@ -434,13 +434,13 @@ style="
             if (response) {
               return response; // Assuming your script returns JSON response
             } else {
-              throw new Error("Failed to submit the form.");
+              throw new Error("Er is iets misgegaan. Probeer het later nog eens..");
             }
           })
           .then(function (data) {
             // Display a success message
             document.getElementById("message").textContent =
-              "Data submitted successfully!";
+              "Verzonden!";
             document.getElementById("message").style.display = "block";
             document.getElementById("message").style.backgroundColor = "green";
             document.getElementById("message").style.color = "beige";
@@ -456,7 +456,7 @@ style="
             // Handle errors, you can display an error message here
             console.error(error);
             document.getElementById("message").textContent =
-              "An error occurred while submitting the form.";
+              "Er is iets mis gegaan met het verzenden. Probeer het later nog eens..";
             document.getElementById("message").style.display = "block";
           });
       });
