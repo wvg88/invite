@@ -40,11 +40,27 @@ href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
 
         }
         ul{
-            list-style: inside;
-            list-style-type: circle;
+            /*list-style: inside;
+            list-style-type: circle;*/
+            text-align: center;
+
 
         }
-   
+        li{
+          font-size: 0.8em;
+          text-transform: uppercase;
+          font-weight: 600;
+
+        }
+        .underline{
+          margin-top: 0.3em;
+          margin-bottom: 0.3em;
+          margin-left: auto;
+          margin-right: auto;
+          width:100px;
+          border-bottom:2px #fff solid;
+        }
+  
  
       
         #content{
@@ -66,6 +82,7 @@ href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
             font-style: normal;;
             
         }
+        
 
         .pl-4 {
      padding-left: 0rem !important; 
@@ -243,6 +260,12 @@ href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
         dezelfde tijd dat wij 11 jaar geleden onze toen nog prille liefde voor het eerst uitspraken naar elkaar. De natuur is op
         haar mooist en de warme zonnestralen, de lange, gouden avond en de bloeiende tuin bieden de perfecte achtergrond voor
         deze dag, samen met jullie!
+<h1>Details</h1>
+<ul>
+<li>21:00 - Dansen</li>
+<div class="underline"></div>
+<li>onder de sterren</li>
+</ul>
 <h1>Vervoer & Parkeren</h1> 
 Haghorst ligt op ongeveer 15 km vanaf Tilburg. Je komt het makkelijkste bij de locatie met de auto of de fiets. 
 Je kan vanaf Tilburg CS een OV fiets huren en vanaf daar fiets je in ongeveer 40 minuten door een mooi stukje Brabantse natuur richting Haghorst. 
@@ -257,14 +280,13 @@ Wil je blijven slapen? Vink het onderaan aan.
 
 Voor degenen die graag in een grotere tent of camper willen slapen of wat meer comfort zoeken, zijn er verschillende campings en hotels in de nabije omgeving:
 <br>
-<br>* <a href="https://kleinbaest.nl/">https://kleinbaest.nl/</a>
-<br>* <a href="https://www.buitenhofhilvarenbeek.nl/">https://www.buitenhofhilvarenbeek.nl/</a>
-<br>* <a href="https://debeerze.nl/">Boutique Hotel De Beerze</a>
+<br><a href="https://kleinbaest.nl/">https://kleinbaest.nl/</a>
+<br><a href="https://www.buitenhofhilvarenbeek.nl/">https://www.buitenhofhilvarenbeek.nl/</a>
+<br><a href="https://debeerze.nl/">Boutique Hotel De Beerze</a>
 
 <h1>Cadeau</h1>
 
 Jouw aanwezigheid is voor ons het grootste cadeau! Mocht je iets willen geven, dan waarderen we een bijdrage aan ons feest heel erg. 
-Ben jij handig & creatief en wil je liever een handje helpen? Laat het onderaan weten zodat wij je kunnen laten weten wat je kan bijdragen op de dag zelf.
 <br><br>
 
 
@@ -273,7 +295,19 @@ Laat ons weten of je erbij bent voor 1 juni! Neem je iemand mee? Meld die dan af
 
 Zo kunnen we er samen met jullie een onvergetelijke avond van maken. 
 
-
+<div
+id="message"
+style="
+  display: none;
+  margin: 20px;
+  font-weight: bold;
+  color:#fff;
+  padding: 8px;
+  background-color: beige;
+  border-radius: 4px;
+  border-color: aquamarine;
+"
+></div>
     <form id="form" class="container m-4 pl-4" method="POST">
         <div class="field">
           <label class="label">Naam</label>
@@ -329,17 +363,9 @@ Zo kunnen we er samen met jullie een onvergetelijke avond van maken.
               <input type="checkbox" name="Overnachten" value="yes" /> Ik wil blijven overnachten
 
           </div>
-        <div class="field">
-          <div class="control">
-            <label class="checkbox">
-              <input type="checkbox" name="Meehelpen" value="yes" /> Ik wil graag meehelpen
-
-          </div>
+ 
           <br>
-          <div class="field">
-
-          </div>
-
+  
      
   
         <div class="field is-grouped">
@@ -355,19 +381,7 @@ Zo kunnen we er samen met jullie een onvergetelijke avond van maken.
 
      
       </form>
-      <div
-        id="message"
-        style="
-          display: none;
-          margin: 20px;
-          font-weight: bold;
-          color:aquamarine;
-          padding: 8px;
-          background-color: beige;
-          border-radius: 4px;
-          border-color: aquamarine;
-        "
-      ></div>
+   
       </div>
     
 
